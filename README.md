@@ -1,32 +1,51 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+# SI Storage
 
 ## Usage
 1. Init storage
 ```dart
+import 'package:si_storage/si_storage.dart';
+
 await SIStorage.init();
 ```
-2. Use `SecureStorage` with static function
-3. Use `NormalStorage` with static function
+2. Use `SecureStorage` with static function, support only `string`
+```dart
+import 'package:si_storage/secure_storage.dart';
+
+// set value
+await SecureStorage.write("secure", "123");
+
+// get value
+String? value = await SecureStorage.read("secure");
+
+// delete by key
+await SecureStorage.delete("secure");
+
+// delete by list key
+await SecureStorage.deleteByListKey(["secure", "otherKey"]);
+
+// delete all
+await SecureStorage.deleteAll();
+```
+3. Use `NormalStorage` with static function, support `bool, int, double, string, string list`
+```dart
+import 'package:si_storage/normal_storage.dart';
+
+// set value
+await NormalStorage.setBool("hello", true);
+
+// get value
+bool? value = NormalStorage.getBool("normal"); // no need async/await
+
+// check contain key
+bool? hasKey = NormalStorage.containsKey("normal");
+
+// delete by key
+await NormalStorage.delete("normal");
+
+// delete by list key
+await NormalStorage.deleteByListKey(["normal", "otherKey"]);
+
+// delete all
+await NormalStorage.deleteAll();
+
+```
