@@ -1,4 +1,13 @@
 # SI Storage
+This plugin wrap `flutter_secure_storage` and `shared_preferences` to store key-value data.
+
+1. SecureStorage will store data in secure storage:
+
+- [Keychain](https://developer.apple.com/library/content/documentation/Security/Conceptual/keychainServConcepts/01introduction/introduction.html#//apple_ref/doc/uid/TP30000897-CH203-TP1) is used for iOS
+- AES encryption is used for Android. AES secret key is encrypted with RSA and RSA key is stored in [KeyStore](https://developer.android.com/training/articles/keystore.html)
+
+2. NormalStorage will use for simple data (NSUserDefaults on iOS and macOS, SharedPreferences on Android).
+
 
 ## Usage
 1. Init storage
