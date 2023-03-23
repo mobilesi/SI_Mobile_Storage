@@ -1,4 +1,4 @@
-# SI Storage
+# SI Mobile Storage
 This plugin wrap `flutter_secure_storage` and `shared_preferences` to store key-value data.
 
 1. SecureStorage will store data in secure storage:
